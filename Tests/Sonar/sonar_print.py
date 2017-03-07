@@ -2,7 +2,8 @@ import RPi.GPIO as GPIO
 import signal
 import time
 import sys
-GPIO.setmode(GPIO.BCM)
+
+GPIO.setmode(GPIO.BOARD)
 
 def sigint_handler(signum, instant):
     """
@@ -17,21 +18,21 @@ signal.signal(signal.SIGINT, sigint_handler)
 def clean():
     GPIO.cleanup()
 
-TRIG = 26
-ECHO = 19
+TRIG = 37
+ECHO = 35
 
-print ("Distance Measurement In Progress")
+sampling_rate = 20.0
+speed_of_sound = 349.10
+max_distance = 4.0
+max_delta_t = max_distance / speed_of_sound
 
-GPIO.setup(TRIG,GPIO.OUT)
-GPIO.setup(ECHO,GPIO.IN)
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
 
 GPIO.output(TRIG, False)
-print ("Waiting For Sensor To Settle")
-time.sleep(2)
+time.sleep(1)
 
-frq = 20.0
-
-print ("Frequency:", frq, "Hz")
+print ("Sampling Rate:", sampling_rate, "Hz")
 print ("Distances (cm)")
 
 while True:
@@ -40,19 +41,18 @@ while True:
     time.sleep(0.00001)
     GPIO.output(TRIG, False)
 
-    while GPIO.input(ECHO)==0:
-      pulse_start = time.time()
+    while GPIO.input(ECHO) == 0:
+      start_t = time.time()
 
-    while GPIO.input(ECHO)==1 or time.time() - pulse_start > 1:
-      pulse_end = time.time()
+    while GPIO.input(ECHO) == 1 and time.time() - start_t < max_delta_t:
+      end_t = time.time()
 
-    if pulse_end - pulse_start < 1:
-        pulse_duration = pulse_end - pulse_start
-        distance = pulse_duration * 17150
-        distance = round(distance, 2)
+    if end_t - start_t < max_delta_t:
+        delta_t = end_t - start_t
+        distance = 100*(0.5 * delta_t * speed_of_sound)
     else:
         distance = -1
 
-    print (distance)
+    print (round(distance, 2))
 
-    time.sleep(1/frq)
+    time.sleep(1/sampling_rate)
