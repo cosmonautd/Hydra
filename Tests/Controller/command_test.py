@@ -11,9 +11,9 @@ GPIO.setup(27, GPIO.OUT)
 GPIO.setup(22, GPIO.OUT)
 
 # motors set 2 (right)
-GPIO.setup(5,  GPIO.OUT)
-GPIO.setup(6,  GPIO.OUT)
-GPIO.setup(13, GPIO.OUT)
+GPIO.setup(16,  GPIO.OUT)
+GPIO.setup(20,  GPIO.OUT)
+GPIO.setup(21, GPIO.OUT)
 
 command = ""
 
@@ -35,9 +35,9 @@ while not command == "quit":
         GPIO.output(27, GPIO.HIGH)
         GPIO.output(22, GPIO.LOW)
 
-        GPIO.output(5,  GPIO.HIGH)
-        GPIO.output(6,  GPIO.LOW)
-        GPIO.output(13, GPIO.HIGH)
+        GPIO.output(16,  GPIO.HIGH)
+        GPIO.output(20,  GPIO.LOW)
+        GPIO.output(21, GPIO.HIGH)
 
         time.sleep(steps*1.5)
 
@@ -47,9 +47,9 @@ while not command == "quit":
         GPIO.output(27, GPIO.LOW)
         GPIO.output(22, GPIO.HIGH)
 
-        GPIO.output(5,  GPIO.HIGH)
-        GPIO.output(6,  GPIO.HIGH)
-        GPIO.output(13, GPIO.LOW)
+        GPIO.output(16,  GPIO.HIGH)
+        GPIO.output(20,  GPIO.HIGH)
+        GPIO.output(21, GPIO.LOW)
 
         time.sleep(steps*1.5)
 
@@ -59,9 +59,9 @@ while not command == "quit":
         GPIO.output(27, GPIO.LOW)
         GPIO.output(22, GPIO.HIGH)
         
-        GPIO.output(5,  GPIO.HIGH)
-        GPIO.output(6,  GPIO.LOW)
-        GPIO.output(13, GPIO.HIGH)
+        GPIO.output(16,  GPIO.HIGH)
+        GPIO.output(20,  GPIO.LOW)
+        GPIO.output(21, GPIO.HIGH)
         
         time.sleep(steps*1.25)
         
@@ -71,9 +71,9 @@ while not command == "quit":
         GPIO.output(27, GPIO.HIGH)
         GPIO.output(22, GPIO.LOW)
         
-        GPIO.output(5,  GPIO.HIGH)
-        GPIO.output(6,  GPIO.HIGH)
-        GPIO.output(13, GPIO.LOW)
+        GPIO.output(16,  GPIO.HIGH)
+        GPIO.output(20,  GPIO.HIGH)
+        GPIO.output(21, GPIO.LOW)
         
         time.sleep(steps*1.25)
 
@@ -82,9 +82,9 @@ while not command == "quit":
     GPIO.output(27, GPIO.LOW)
     GPIO.output(22, GPIO.LOW)
 
-    GPIO.output(5,  GPIO.HIGH)
-    GPIO.output(6,  GPIO.LOW)
-    GPIO.output(13, GPIO.LOW)
+    GPIO.output(16,  GPIO.HIGH)
+    GPIO.output(20,  GPIO.LOW)
+    GPIO.output(21, GPIO.LOW)
 
     time.sleep(0.5)
 
