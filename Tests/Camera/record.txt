@@ -1,0 +1,5 @@
+# Record video
+raspivid -t 90000 -w 640 -h 480 -vf -hf -ih -fps 30 -o hydra1.h264
+
+# Wrap h264 with mp4
+MP4Box -add hydra1.h264 hydra1.mp4

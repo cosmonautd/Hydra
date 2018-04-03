@@ -1,6 +1,8 @@
-import curses
 import time
+import curses
 import RPi.GPIO as GPIO
+
+GPIO.setwarnings(False)
 
 stdscr = curses.initscr()
 curses.cbreak()
@@ -28,10 +30,10 @@ key = ''
 while not key == ord('q'):
 
     key = stdscr.getch()
-    
+
     stdscr.addch(20, 25, key)
     stdscr.refresh()
-    
+
     if   key == curses.KEY_UP:
         # move forward
         GPIO.output(17, GPIO.HIGH)
@@ -57,21 +59,21 @@ while not key == ord('q'):
         GPIO.output(17, GPIO.HIGH)
         GPIO.output(27, GPIO.LOW)
         GPIO.output(22, GPIO.HIGH)
-        
+
         GPIO.output(16, GPIO.HIGH)
         GPIO.output(20, GPIO.LOW)
         GPIO.output(21, GPIO.HIGH)
-                
+
     elif key == curses.KEY_LEFT:
         # turn left
         GPIO.output(17, GPIO.HIGH)
         GPIO.output(27, GPIO.HIGH)
         GPIO.output(22, GPIO.LOW)
-        
+
         GPIO.output(16, GPIO.HIGH)
         GPIO.output(20, GPIO.HIGH)
         GPIO.output(21, GPIO.LOW)
-    
+
     else:
         # break
         GPIO.output(17, GPIO.HIGH)

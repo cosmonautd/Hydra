@@ -10,7 +10,7 @@ import sys
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('192.168.1.5', 3333)
+server_address = ('192.168.5.110', 3333)
 sock.bind(server_address)
 sock.listen(1)
 

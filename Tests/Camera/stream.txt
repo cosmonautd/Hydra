@@ -1,0 +1,5 @@
+# Start server on RPi
+raspivid -t 0 -w 640 -h 480 -vf -hf -ih -fps 12 -o - | nc -k -l 2222
+
+# Start client on another computer
+mplayer -fps 200 -demuxer h264es ffmpeg://tcp://<RPI-IP>:2222
