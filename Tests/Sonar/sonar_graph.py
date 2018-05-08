@@ -34,7 +34,16 @@ frq = 20.0
 print ("Frequency:", frq, "Hz")
 print ("Distances (cm)")
 
-while True:
+plotting = True;
+
+def handle_close(evt):
+    global plotting
+    plotting=False
+    print("Closed Figure! See ya!")
+
+fig.canvas.mpl_connect('close_event', handle_close)
+
+while plotting:
 
     GPIO.output(TRIG, True)
     time.sleep(0.00001)
