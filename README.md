@@ -5,4 +5,4 @@ Hydra is a mini robot rover controlled by a Raspberry Pi Model B. It is a differ
 
 <img src="https://davidborges.xyz/assets/hydra1.jpg" alt="Hydra 1" width="250"/> <img src="https://davidborges.xyz/assets/hydra2.jpg" alt="Hydra 2" width="250"/> <img src="https://davidborges.xyz/assets/hydra3.jpg" alt="Hydra 3" width="250"/>
 
-This repository contains the code for some of the modules from Turret, such as cameras, ultrasonic sensors, inertial measurement units and remote control.
+This repository contains the code for some of the modules from Hydra, such as cameras, ultrasonic sensors, inertial measurement units and remote control.
